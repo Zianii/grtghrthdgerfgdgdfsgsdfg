@@ -426,7 +426,7 @@ message.channel.sendMessage('**الرجاء الانتظار ريث ما يتم 
 
 
 client.on('message', message => { 
-    if (message.content === "+seroles") {
+    if (message.content === ".seroles") {
         client.guilds.forEach(m =>{
  message.guild.createRole({
        name : "♛",
