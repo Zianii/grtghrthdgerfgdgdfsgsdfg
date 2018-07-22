@@ -483,6 +483,11 @@ client.on('message', message => {
        name : "⇝M U S I C⇜",
        permissions :   [1],
        color : " #000000"
+    }) 
+      message.guild.createRole({
+       name : "⇝MEMBERS⇜",
+       permissions :   [1],
+       color : " #000000"
    }) 
 })
 }
