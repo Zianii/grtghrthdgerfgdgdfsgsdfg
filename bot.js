@@ -4,7 +4,7 @@ const prefix = '.'
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-  client.user.setGame(`SUB TO KBOOSH`,"http://twitch.tv/xmas")
+  client.user.setGame(`تم استرجاع البوت | جددنا نظام الحمايه`,"http://twitch.tv/xmas")
   console.log('')
   console.log('')
   console.log('╔[═════════════════════════════════════════════════════════════════]╗')
