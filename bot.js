@@ -322,7 +322,7 @@ client.on('message', msg => {
 
   client.on('message', message => {
   const port = '25565'
-  if(message.content.startsWith('$mcstats')) {
+  if(message.content.startsWith('.mcstats')) {
  const args = message.content.split(" ").slice(1).join(" ")
     if (!args) return message.channel.send("** يجب كتابة ايبي السيرفر . **");
         let embed = new Discord.RichEmbed()
