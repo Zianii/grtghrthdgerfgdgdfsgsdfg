@@ -4,7 +4,7 @@ const prefix = '.'
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`XMAS | اول بوت متكامل اسويه`,"http://twitch.tv/zeex")
+client.user.setGame(`XMAS | Void Bot !`,"http://twitch.tv/zeex")
   console.log('')
   console.log('')
   console.log('╔[═════════════════════════════════════════════════════════════════]╗')
@@ -39,8 +39,7 @@ client.on('message', message => {
 .addField(' الاعضاء👥 ',` [${client.users.size}] `)
 .addField('الرومات📚 ',`[${client.channels.size}]`) 
 .addField(' البنق🚀 ',`[${Date.now() - message.createdTimestamp}]`) 
-.addField('صاحب البوت ',`ZEEX`)
-.addField('مصمم البوت ',`XMAS`)
+.addField('مصمم وصاحب البوت ',`XMAS`)
 .setColor('#7d2dbe')
   message.channel.sendEmbed(embed);
     }
@@ -56,8 +55,7 @@ client.on('message', message => {
 .addField(' الاوامر العامه ',` .help-public `)
 .addField('اوامر الالوان',`قريبا`) 
 .addField(' اوامر الاغاني',`قريبا`) 
-.addField('صاحب البوت ',`ZEEX`)
-.addField('مصمم البوت ',`XMAS`)
+.addField('مصمم وصاحب البوت ',`XMAS`)
 .setColor('#7d2dbe')
   message.channel.sendEmbed(embed);
     }
