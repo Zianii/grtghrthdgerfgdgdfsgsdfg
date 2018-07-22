@@ -87,7 +87,7 @@ client.on('message', message => {
                 if(message.content === prefix + "invite") {
                     let embed = new Discord.RichEmbed ()
                     embed.setTitle("**:arrow_right: Invite Bot!**")
-                    .setURL("https://discordapp.com/api/oauth2/authorize?client_id=468528676775133184&permissions=2146958583&scope=bot");
+                    .setURL("https://discordapp.com/api/oauth2/authorize?client_id=470380238476542001&permissions=2146958583&scope=bot");
                    message.channel.sendEmbed(embed);
                   }
 });
