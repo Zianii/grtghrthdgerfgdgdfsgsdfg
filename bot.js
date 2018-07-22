@@ -390,8 +390,8 @@ client.on('message', msg => {
   
 
 
-client.on('message', message => {
-    if (message.content === "+serooms") {
+ client.on('message', message => {
+    if (message.content === ".serooms") {
     if(!message.channel.guild) return message.channel.send('**This Command Only For Servers !**')
             if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.channel.send(`**${message.author.username} You Dont Have** ``MANAGE_CHANNELS`` **Premission**`);
 
