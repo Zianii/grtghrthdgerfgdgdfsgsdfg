@@ -390,60 +390,36 @@ client.on('message', msg => {
   
 
 
-const db = require('quick.db')
-const prefix = '.';
-client.on('message', async message => {
-   if(message.content.startsWith(prefix + "credits")) {
- let args = message.content.split(' ').slice(1);
+client.on('message', message => {
+    if (message.content === "+serooms") {
+    if(!message.channel.guild) return message.channel.send('**This Command Only For Servers !**')
+            if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.channel.send(`**${message.author.username} You Dont Have** ``MANAGE_CHANNELS`` **Premission**`);
 
-var user = message.mentions.users.first() || message.author;
         
-        var balance = await db.fetch(`userBalance_${user.id}`)
-        
-        if (balance === null) balance = 50;
-        
-        var embed = new Discord.RichEmbed()
-        .setTitle('Coin Balance')
-        .setDescription(`${user.username}, **your balance:\n:dollar: $${balance}**`)
-        .setColor('#ffffff')
-        .setFooter('Requested By ' + message.author.tag, message.author.avatarURL)
-        message.channel.send(embed)
+     message.guild.createChannel('「 O W N E R 」', 'voice')
+     message.guild.createChannel('「 C O - L E A D E R 」', 'voice')
+     message.guild.createChannel('「ADMINSTRATOR」', 'voice')
+     message.guild.createChannel('𖦲₁PARTY | بارتي𖦲', 'voice')
+     message.guild.createChannel('𖦲₂PARTY | بارتي𖦲', 'voice')
+     message.guild.createChannel('𖦲₂PARTY | بارتي𖦲', 'voice')
+     message.guild.createChannel('✬ʝuşτ-1✬', 'voice')
+ message.guild.createChannel('✬ʝuşτ-2✬', 'voice')
+     message.guild.createChannel('✬ʝuşτ-3✬', 'voice')
+     message.guild.createChannel('✬ʝuşτ-4✬', 'voice')
+     message.guild.createChannel('✬ʝuşτ-5✬', 'voice')
+     message.guild.createChannel('😴sleep', 'voice')
+          message.guild.createChannel('༆كَبّـآرَ آلَشّـخٌـصِـيّآتُ༆', 'voice')
+     message.guild.createChannel('welcome', 'text')
+     message.guild.createChannel('info', 'text')
+     message.guild.createChannel('bot', 'text')
+     message.guild.createChannel('chat', 'text')
+     message.guild.createChannel('Youtube', 'text')
+     message.guild.createChannel('bo7', 'text')
+     message.guild.createChannel('party', 'text')
+     message.guild.createChannel('pic', 'text')
 
-}
-});
-const ms = require('ms')
-client.on('message', async message => {
-   if(message.content.startsWith(prefix + "daily")) {
-    let cooldown = 8.64e+7,
-    amount = 999999999
 
-    let lastDaily = await db.fetch(`lastDaily_${message.author.id}`)
-    try {
-    db.fetch(`userBalance_${message.member.id}`).then(bucks => {
-    if(bucks == null){
-        db.set(`userBalance_${message.member.id}`, 50)}
-
-    else if (lastDaily !== null && cooldown - (Date.now() - lastDaily) > 0) {
-        let timeObj = ms(cooldown - (Date.now() - lastDaily))
-
-        let lastDailyEmbed = new Discord.RichEmbed()
-        .setAuthor(`Next Daily`)
-        .setColor('#ffffff')
-        .setDescription(`You sucessfully collected this, you must wait to collect next dily. Time Left: **${timeObj}**!`)
-        .setFooter('Requested By ' + message.author.tag, message.author.avatarURL)
-        message.channel.send(lastDailyEmbed)
-    } else {
-        db.set(`lastDaily_${message.author.id}`, Date.now());
-        db.add(`userBalance_${message.member.id}`, amount).then(i => {
-          var discord = require('discord.js')
-          var embed = new Discord.RichEmbed()
-          .setTitle('Todays Daily')
-          .setDescription(`Sucessfully collected :dollar:$${amount}`)
-          .setColor('#ffffff')
-          .setFooter('Requested By ' + message.author.tag, message.author.avatarURL)
-          message.channel.send(embed);
-        })}
-    })} catch(err) {console.log(err)}
+message.channel.sendMessage('**الرجاء الانتظار ريث ما يتم صناعة السيرفر**')
 }
 });
 
