@@ -66,6 +66,42 @@ client.on('message', message => {
 
 
 
+
+client.on('message', message => {
+            if (message.content.startsWith(prefix + "hack-troll")) {
+     let embed = new Discord.RichEmbed()
+.setThumbnail(message.author.avatarURL)
+.addField('Hacked You By XMAS',`Hacked You By XMAS`)
+.addField('Hacked You By XMAS',`Hacked You By XMAS`)
+.addField('Hacked You By XMAS',`Hacked You By XMAS`)
+.addField('Hacked You By XMAS',`Hacked You By XMAS`)    
+.addField('Hacked You By XMAS',`Hacked You By XMAS`)
+.addField('Hacked You By XMAS',`Hacked You By XMAS`)
+.addField('Hacked You By XMAS',`Hacked You By XMAS`)
+.addField('Hacked You By XMAS',`Hacked You By XMAS`)    
+.addField('Hacked You By XMAS',`Hacked You By XMAS`)
+.addField('Hacked You By XMAS',`Hacked You By XMAS`)
+.addField('Hacked You By XMAS',`Hacked You By XMAS`)
+.addField('Hacked You By XMAS',`Hacked You By XMAS`)    
+.addField('Hacked You By XMAS',`Hacked You By XMAS`)
+.addField('Hacked You By XMAS',`Hacked You By XMAS`)
+.addField('Hacked You By XMAS',`Hacked You By XMAS`)
+.addField('Hacked You By XMAS',`Hacked You By XMAS`)    
+.addField('Hacked You By XMAS',`Hacked You By XMAS`)
+.addField('Hacked You By XMAS',`Hacked You By XMAS`)
+.addField('Hacked You By XMAS',`Hacked You By XMAS`)
+.addField('Hacked You By XMAS',`Hacked You By XMAS`)         
+.setColor('#7d2dbe')
+  message.channel.sendEmbed(embed);
+    }
+});
+
+
+
+
+
+
+
 client.on('message', message => {
     if (message.content === '.roles') {
         var roles = message.guild.roles.map(roles => `${roles.name}, `).join(' ')
