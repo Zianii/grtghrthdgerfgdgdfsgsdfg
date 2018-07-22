@@ -91,6 +91,18 @@ client.on('message', message => {
 });
 
 
+             client.on('message', message => {
+                if(message.content === prefix + "support") {
+                    let embed = new Discord.RichEmbed ()
+                    embed.setTitle("**:arrow_right: Support Server Bot!**")
+                    .setURL("https://discord.gg/WBug9eX");
+                   message.channel.sendEmbed(embed);
+                  }
+});
+
+
+
+
 client.on('message', message => {
      if (message.author.bot) return;
        if (message.content ===  ".help-public") {
