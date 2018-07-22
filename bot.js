@@ -48,18 +48,6 @@ client.on('message', message => {
 
 
 client.on('message', message => {
-            if (message.content.startsWith(prefix + "support")) {
-     let embed = new Discord.RichEmbed()
-.setThumbnail(message.author.avatarURL)
-.addField('سيرفر سبورت البوت ',`https://discord.gg/WBug9eX`)
-.setColor('#7d2dbe')
-  message.channel.sendEmbed(embed);
-    }
-});
-
-
-
-client.on('message', message => {
             if (message.content.startsWith(prefix + "help")) {
      let embed = new Discord.RichEmbed()
 .setThumbnail(message.author.avatarURL)
