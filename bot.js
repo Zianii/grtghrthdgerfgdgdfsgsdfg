@@ -65,6 +65,22 @@ client.on('message', message => {
 
 
 
+client.on('message', message => {
+            if (message.content.startsWith(prefix + "xmas")) {
+     let embed = new Discord.RichEmbed()
+.setThumbnail(message.author.avatarURL)
+.addField(' اسمي',` . عبدالله `)
+.addField(' العمر ',` .15 `)
+.addField('المهنة',`يوتيوبر`) 
+.addField(' تعريف عن ',`XMAS`)
+.setColor('#7d2dbe')
+  message.channel.sendEmbed(embed);
+    }
+});
+
+
+
+
 
 client.on('message', message => {
     
