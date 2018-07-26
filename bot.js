@@ -745,6 +745,69 @@ client.on('message', message => {
 
 
 
+client.on('message' , message => {
+    var prefix = ".";
+    if(message.content.startsWith(prefix + 'ticket')) {
+        message.channel.send('`The Ticket has been create`');
+        client.users.get('283580465862934539').send({embed: new Discord.RichEmbed()
+        .setDescription(`**<@${message.author.id}> has Create a Ticket call him**`)
+        });
+    }
+});    
+
+
+
+
+const developers = ["283580465862934539","283580465862934539",""]
+const adminprefixe = "a.";
+client.on('message', message => {
+    var argresult = message.content.split(` `).slice(1).join(' ');
+      if (!developers.includes(message.author.id)) return;
+      
+  if (message.content.startsWith(adminprefix + 'ply')) {
+    client.user.setGame(argresult);
+      message.channel.send(`**✅   ${argresult}**`)
+  } else 
+     if (message.content === (adminprefix + "leave")) {
+    message.guild.leave();        
+  } else  
+  if (message.content.startsWith(adminprefix + 'wt')) {
+  client.user.setActivity(argresult, {type:'WATCHING'});
+      message.channel.send(`**✅   ${argresult}**`)
+  } else 
+  if (message.content.startsWith(adminprefix + 'ls')) {
+  client.user.setActivity(argresult , {type:'LISTENING'});
+      message.channel.send(`**✅   ${argresult}**`)
+  } else 
+  if (message.content.startsWith(adminprefix + 'st')) {
+    client.user.setGame(argresult, "https://www.twitch.tv/xmas");
+      message.channel.send(`**✅**`)
+  }
+  if (message.content.startsWith(adminprefix + 'setname')) {
+  client.user.setUsername(argresult).then
+      message.channel.send(`Changing The Name To ..**${argresult}** `)
+} else
+if (message.content.startsWith(adminprefix + 'setavatar')) {
+  client.user.setAvatar(argresult);
+    message.channel.send(`Changing The Avatar To :**${argresult}** `);
+}
+});
+
+
+
+client.on('ebnklb',function(ebnklb) {
+    
+    if(ebnklb.content.startsWith("<@470380238476542001>")) {
+        ebnklb.channel.send('Hey Im **Void Bot !**  A Nice Bot Developed By:`XMAS`')
+        ebnklb.channel.send('My Prefix `.`')
+
+    }
+});
+
+
+
+
+
 
 
 
