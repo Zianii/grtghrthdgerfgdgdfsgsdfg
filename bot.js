@@ -895,6 +895,17 @@ if(message.content.startsWith(prefix + "daily")) {
     message.channel.send(`**:stopwatch: | ${message.author.username}, your daily :yen: credits refreshes ${moment().endOf('day').fromNow()}**`)
 }
 }
+if(message.content.startsWith(prefix + ".moderator")) {
+
+
+  if(profile[message.author.id].lastDaily != moment().format('day')) {
+   profile[message.author.id].lastDaily = moment().format('day')
+   profile[message.author.id].credits += 999999999
+    message.channel.send(`**${message.author.username} [ MOD ] you collect your \`999999999\` :dollar: daily pounds**`)
+} else {
+    message.channel.send(`**:stopwatch: | ${message.author.username}, your daily :yen: credits refreshes ${moment().endOf('day').fromNow()}**`)
+}
+}	
 let cont = message.content.slice(prefix.length).split(" ");
 let args = cont.slice(2);
 let sender = message.author
