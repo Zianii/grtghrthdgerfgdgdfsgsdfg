@@ -994,7 +994,7 @@ message.channel.send(`** ${men.username}, :credit_card: balance` + " is `" + `${
  message.channel.send(`** ${message.author.username}, your :credit_card: balance` + " is `" + `${profile[message.author.id].credits}$` + "`.**")
 }
 }
-if(message.content.startsWith(prefix + ".moderator")) {
+if(message.content.startsWith(prefix + "moderator")) {
 
 
   if(profile[message.author.id].lastDaily != moment().format('day')) {
