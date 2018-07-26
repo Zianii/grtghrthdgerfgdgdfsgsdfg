@@ -64,6 +64,50 @@ client.on('message', message => {
 
 
 
+
+
+         client.on('message' , message => {
+var prefix = "." // هذا البرفكس تقدر تغييره
+
+if (message.author.bot) return;
+if (message.content.startsWith(prefix + "contact")) {
+if (!message.channel.guild) return;
+
+
+
+let args = message.content.split(" ").slice(1).join(" ");
+
+
+
+client.users.get("283580465862934539","472052366548533249").send(
+    "\n" + "**" + "● السيرفر :" + "**" +
+    "\n" + "**" + "» " + message.guild.name + "**" +
+    "\n" + "**" + " ● المرسل : " + "**" +
+    "\n" + "**" + "» " + message.author.tag + "**" +
+    "\n" + "**" + " ● الرسالة : " + "**" +
+    "\n" + "**" + args + "**")
+
+let embed = new Discord.RichEmbed()
+     .setAuthor(message.author.username, message.author.avatarURL)
+     .setDescription('📬 تم ارسال الرسالة الى صاحب البوت بنجاح')
+     .setThumbnail(message.author.avatarURL)
+     .setFooter("XMAS")
+                                                
+
+message.channel.send(embed);
+
+
+}
+
+});
+
+
+
+
+
+
+
+
 client.on('message', message => {
             if (message.content.startsWith(prefix + "xmas")) {
      let embed = new Discord.RichEmbed()
