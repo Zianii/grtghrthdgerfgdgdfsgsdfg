@@ -1101,7 +1101,7 @@ client.on('message', message => {
   if (message.mentions.users.size < 1) return message.reply("**منشن شخص**");
   if(!reason) return message.reply ("**اكتب سبب الطرد**");
   if (!message.guild.member(user)
-  .kickable) return message.reply("**لايمكنني طرد شخص اعلى من رتبتي يرجه اعطاء البوت رتبه عالي**");
+  .kickable) return message.reply("**لايمكنني طرد شخص اعلى من رتبتي يرجه اعطاء البوت رتبه عالية**");
 
   message.guild.member(user).kick();
 
@@ -1228,25 +1228,7 @@ var prefix = ".";
 	
 	
 	
-	
-	
-client.on('ready', function(){    
-    var ms = 40000 ;    
-    var setGame = ['!inv','!help'];    
-    var i = -1;    
-    var j = 0;    
-    setInterval(function (){    
-        if( i == -1 ){    
-j = 1;    
-       }    
-        if( i == (setGame.length)-1 ){    
-            j = -1;    
-      }    
-       i = i+j;    
-        client.user.setGame(setGame[i],`http://www.youtube.com/c/NICARMU`);    
-}, ms);    
-    
-});	
+
 	
 	
 	
@@ -1261,12 +1243,6 @@ m.sendMessage(args)
 })
 }
 });	
-	
-	
-	
-	
-	
-	
 	
 	
 	
