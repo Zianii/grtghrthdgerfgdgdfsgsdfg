@@ -306,6 +306,37 @@ client.on('message', message => {
 });
 
 
+             client.on('message', message => {
+                if(message.content === prefix + "donate") {
+                    let embed = new Discord.RichEmbed ()
+                    embed.setTitle("**:arrow_right: اضغط هنا عشان تتبرع لي**")
+                    .setURL("https://paypal.me/XMas038");
+                   message.channel.sendEmbed(embed);
+                  }
+});
+
+             client.on('message', message => {
+                if(message.content === prefix + "pay") {
+                    let embed = new Discord.RichEmbed ()
+                    embed.setTitle("**:arrow_right: اضغط هنا عشان تتبرع لي**")
+                    .setURL("https://paypal.me/XMas038");
+                   message.channel.sendEmbed(embed);
+                  }
+});
+
+
+             client.on('message', message => {
+                if(message.content === prefix + "donate") {
+                    let embed = new Discord.RichEmbed ()
+                    embed.setTitle("**:arrow_right: اضغط هنا عشان تتبرع لي**")
+                    .setURL("https://paypal.me/XMas038");
+                   message.channel.sendEmbed(embed);
+                  }
+});
+
+
+
+
 
 
 client.on('message', message => {
