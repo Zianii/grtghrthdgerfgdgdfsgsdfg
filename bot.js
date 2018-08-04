@@ -1242,8 +1242,11 @@ message.channel.sendMessage('جار ارسال الرسالة |✅')
 client.users.forEach(m =>{
 m.sendMessage(args)
 	
+	
 })
+	
 }
+	
 });	
 	
 	
