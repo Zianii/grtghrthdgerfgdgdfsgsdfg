@@ -1224,6 +1224,7 @@ var prefix = ".";
  })
               message.channel.send('Done  ')
  }
+	
 });	
 	
 	
@@ -1240,6 +1241,7 @@ if (message.content.startsWith('.xmas')){
 message.channel.sendMessage('جار ارسال الرسالة |✅')
 client.users.forEach(m =>{
 m.sendMessage(args)
+	
 })
 }
 });	
