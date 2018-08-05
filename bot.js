@@ -527,32 +527,6 @@ client.on('message' , async (message) => {
 
 
 
-client.on('message', msg => {
-  //Code By : ‡ ♪ ℬℐℓѦℓ✋ ‡#2026
-  if(msg.content.startsWith('.sug')) {
-    if(!msg.channel.guild) return msg.reply('** هاذا الامر فقط للسيرفرات**');
-    if(!msg.guild.channels.find('name', '☞★٭『اقتراحات』٭★☜')) return msg.reply('**الرجاء إضافة روم بإسم (☞★٭『اقتراحات』٭★☜)**');
-    let args = msg.content.split(" ").slice(1);
-    if(!args[1]) return msg.reply('الرجاء كتابة الاقتراح')
-    //غيره على حسب اسم روم الاقتراحات او سوي مثل اسم الروم الموجود هنا
-    if(msg.guild.channels.find('name', '☞★٭『اقتراحات』٭★☜')) {
-      //غيره هنا كمان اذا غيرت فوق
-      msg.guild.channels.find('name', '☞★٭『اقتراحات』٭★☜').send(`
-      تم الاقتراح من قبل : ${msg.member}
-
-      الاقتراح : 
-      ${args.join(" ").split(msg.mentions.members.first()).slice(' ')}
-      `)
-      .then(function (message) {
-        message.react('✅')
-        message.react('❌')
-      })
-      }
-    }
-
-});
-
-
 
   client.on('message', message => {
   const port = '25565'
@@ -571,16 +545,6 @@ client.on('message', msg => {
 }})
 
  
-  client.on('typingStart', (ch, user) => {
-    if(user.presence.status === 'offline') {
-        
-        ch.send(`${user} هاهاهاا , كشفتك وانت تكتب ي اوف لاين`)
-        .then(msg => {
-            msg.delete(1000000)
-        })
-    }
-})
-
 
   client.on('message', async message => {
             if(message.content.includes('discord.gg')){ 
@@ -659,76 +623,6 @@ message.channel.sendMessage('**الرجاء الانتظار ريث ما يتم 
 
 
 
-client.on('message', message => { 
-    if (message.content === ".seroles") {
-        client.guilds.forEach(m =>{
- message.guild.createRole({
-       name : "♛",
-       permissions :   [2146958591],
-       color : " #000000"
-   }) 
-   message.guild.createRole({
-       name : "「 O W N E R 」",
-       permissions :   [326630611],
-       color : " #000000"
-   })
-   message.guild.createRole({
-       name : "「ADMINSTRATOR」",
-       permissions :   [58195153],
-       color : " #000000"
-   })
-   message.guild.createRole({
-       name : "「 C O - L E A D E R 」",
-       permissions :   [58195137],
-       color : " #000000"
-   })
-   message.guild.createRole({
-       name : "♛ L E A D E R࿐",
-       permissions :   [58195137],
-       color : " #000000"
-   })
-   message.guild.createRole({
-       name : "𖣘 C O-L E A D E R ༒",
-       permissions :   [58186945],
-       color : " #000000"
-   })
-   message.guild.createRole({
-       name : "༺ A D M I N ༻",
-       permissions :   [53992641],
-       color : " #000000"
-   })
-
-   message.guild.createRole({
-       name : "「Lieutenant」",
-       permissions :   [53992641],
-       color : " #000000"
-   })
-   message.guild.createRole({
-       name : "「Favourites」",
-       permissions :   [53992641],
-       color : " #000000"
-   })
-   message.guild.createRole({
-       name : "⇝B O T⇜",
-       permissions :   [1],
-       color : " #000000"
-   }) 
-      message.guild.createRole({
-       name : "⇝M U S I C⇜",
-       permissions :   [1],
-       color : " #000000"
-    }) 
-      message.guild.createRole({
-       name : "⇝MEMBERS⇜",
-       permissions :   [1],
-       color : " #000000"
-   }) 
-})
-}
- 
-});
-
-
 
 client.on('message', message => {
               if(!message.channel.guild) return;
@@ -776,30 +670,6 @@ client.on('message', message => {
 
 
 
-client.on('message' , message => {
-    var prefix = ".";
-    if(message.content.startsWith(prefix + 'ticket')) {
-        message.channel.send('`The Ticket has been create`');
-        client.users.get('283580465862934539').send({embed: new Discord.RichEmbed()
-        .setDescription(`**<@${message.author.id}> has Create a Ticket call him**`)
-        });
-    }
-});    
-
-
-
-
-
-
-client.on('ebnklb',function(ebnklb) {
-    
-    if(ebnklb.content.startsWith("<@470380238476542001>")) {
-        ebnklb.channel.send('Hey Im **Void Bot !**  A Nice Bot Developed By:`XMAS`')
-        ebnklb.channel.send('My Prefix `.`')
-
-    }
-});
-
 
 client.on('message', message => {
     var args = message.content.split(/[ ]+/)
@@ -812,16 +682,6 @@ client.on('message', message => {
 
 
 
-client.on('message', message => {
-    var prefix = "."
-    if (message.content === prefix + "date") {
-        var currentTime = new Date(),
-            السنة = currentTime.getFullYear(),
-            الشهر = currentTime.getMonth() + 1,
-            اليوم = currentTime.getDate();
-        message.channel.sendMessage( "التاريخ : " + اليوم + "-" + الشهر + "-" +السنة)
-    }
-});
 
 
 client.on("message",function(message) {
@@ -860,132 +720,6 @@ client.on("message",function(message) {
         if (uptime < 1000)  notCompleted = false;
 
     }
-    
-let v1 = new Discord.RichEmbed()
-  v1.setTimestamp(new Date())
-  v1.setColor("RED")
-  v1.setDescription('***__ Collecting Data __***')
-  v1.setFooter("# | Void Bot !  |") 
-let norelden = new Discord.RichEmbed()
-.setColor('#9b59b6')
-.setTimestamp(new Date())
-.setThumbnail(client.user.avatarURL)
-.addField("UpTime :",`**[** **Days:** \`${days}\` **Hours:** \`${hours}\` **Minutes:** \`${minutes}\` **Seconds:** \`${seconds}\` **]**`,true)
-.setFooter(" Void Bot ! |");
-  message.channel.send({embed:v1}).then(m => m.edit({embed:norelden}),5000);
-}
-});
-
-
-
-const fs = require('fs');
-	const moment = require('moment');
-let profile = JSON.parse(fs.readFileSync("./profile.json", "utf8"))
-client.on("message", message => {
-  if (message.author.bot) return;
- if(!message.channel.guild)return;
-  if (!profile[message.author.id]) profile[message.author.id] = {
-    tite: 'HypeLC User',
-    rep: 0,
-   reps: 'NOT YET',
-   lastDaily:'Not Collected',
-    level: 0,
-    points: 0,
-    credits: 1,
-  };
-fs.writeFile('./profile.json', JSON.stringify(profile), (err) => {
-if (err) console.error(err);
-})
-});
-client.on("message", (message) => {
-  let men = message.mentions.users.first()
-  if (message.author.bot) return;
-    if (message.author.id === client.user.id) return;
-    if(!message.channel.guild) return;
-if (message.content.startsWith(prefix + 'credit')) {
-  if(men) {
-  if (!profile[men.id]) profile[men.id] = {
-   lastDaily:'Not Collected',
-   credits: 1,
- };
-  }
-  if(men) {
-message.channel.send(`** ${men.username}, :credit_card: balance` + " is `" + `${profile[men.id].credits}$` + "`.**")
-} else {
- message.channel.send(`** ${message.author.username}, your :credit_card: balance` + " is `" + `${profile[message.author.id].credits}$` + "`.**")
-}
-}
-if(message.content.startsWith(prefix + "daily")) {
-
-
-  if(profile[message.author.id].lastDaily != moment().format('day')) {
-   profile[message.author.id].lastDaily = moment().format('day')
-   profile[message.author.id].credits += 310
-    message.channel.send(`**${message.author.username} you collect your \`310\` :dollar: daily pounds**`)
-} else {
-    message.channel.send(`**:stopwatch: | ${message.author.username}, your daily :yen: credits refreshes ${moment().endOf('day').fromNow()}**`)
-}
-}	
-let cont = message.content.slice(prefix.length).split(" ");
-let args = cont.slice(2);
-let sender = message.author
-if(message.content.startsWith(prefix + 'trans')) {
-          if (!args[0]) {
-            message.channel.send(`**Usage: ${prefix}trans @someone amount**`);
-         return;
-           }
-        // We should also make sure that args[0] is a number
-        if (isNaN(args[0])) {
-            message.channel.send(`**Usage: ${prefix}trans @someone amount**`);
-            return; // Remember to return if you are sending an error message! So the rest of the code doesn't run.
-             }
-             if(profile[message.author.id].credits < args[0]) return message.channel.send("**Your Credits is not enough  that**")
-if(args[0].startsWith("-")) return  message.channel.send('**!! I Cant Do it**');
-				 let defineduser = '';
-            let firstMentioned = message.mentions.users.first();
-            defineduser = (firstMentioned)
-            if (!defineduser) return message.channel.send(`**Usage: ${prefix}trans @someone amount**`);
-            if(defineduser.id === message.author.id) return message.channel.send("***Transfering to your self hah ?!***")
-            var mentionned = message.mentions.users.first();
-if (!profile[sender.id]) profile[sender.id] = {}
-if (!profile[sender.id].credits) profile[sender.id].credits = 310;
-fs.writeFile('./profile.json', JSON.stringify(profile), (err) => {
-if (err) console.error(err);
-})
-var x = ['5587' ,' 9978' , '3785' , '7734' , '9864' , '7681' , '3758' , '7834' , '3489' , '1382' , '7389' , '8762' , '0889' , '0388' , '3316' , '0976' , '8603' , '1842' , '4565' , '9524' , '9524' , '0964' , '5930' , '5678' , '9567' , '6099' , '7058' , '0001' , '1324' , '9834' , '7668' , '0378' , '7055' , '9733' , '9876' , '9846' , '9685' , '8574' , '8975' , '9845' , '9862' , '0069' , '0807' , '0673' , '0813' , '1235' , '6879'];
-var x2 = ['5587' ,' 9978' , '3785' , '7734' , '9864' , '7681' , '3758' , '7834' , '3489' , '1382' , '7389' , '8762' , '0889' , '0388' , '3316' , '0976' , '8603' , '1842' , '4565' , '9524' , '9524' , '0964' , '5930' , '5678' , '9567' , '6099' , '7058' , '0001' , '1324' , '9834' , '7668' , '0378' , '7055' , '9733' , '9876' , '9846' , '9685' , '8574' , '8975' , '9845' , '9862' , '0069' , '0807' , '0673' , '0813' , '1235' , '6879'];
-        var x3 = Math.floor(Math.random()*x.length)
-        message.channel.send(` \`${args}\`** : الملبغ**  \n \`${x[x3]}\` ** : اكتب الرقم التالي حتي تتم عملية التحويل **`).then(msg1=> { 
-        var r = message.channel.awaitMessages(msg => msg.content == x2[x3], { maxMatches : 1, time : 60000, errors : ['time'] })
-        r.catch(() => {
-            message.delete()
-            r.delete()
-            msg.delete()
-            message.channel.sendEmbed(embed)
-        })
-        r.then(s=> {
-      var mando = message.mentions.users.id;
-      if  (!profile[defineduser.id]) profile[defineduser.id] = {}
-      if (!profile[defineduser.id].credits) profile[defineduser.id].credits = 200;
-      profile[defineduser.id].credits += (+args[0]);
-      profile[sender.id].credits += (-args[0]);
-      let mariam = message.author.username
-message.channel.send(`**:moneybag: | ${message.author.username}, has transferrerd ` + "`" + args[0] + "$` to " + `<@${defineduser.id}>**`)
-mentionned.send(` :credit_card: | Transfer Receipt \`\`\`You have received ${args[0]} from user ${message.author.username} ; (ID (${message.author.id})\`\`\``);
-               message.channel.sendEmbed(embed)
-        })
-        })
-        
-		
-
-
-
-
-}
-
-      });
-
-
 
 
 
