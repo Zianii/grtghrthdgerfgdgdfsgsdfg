@@ -1164,30 +1164,6 @@ client.on('message', message => {
 	
 	
 	
-client.on('message', msg => {
-    if(msg.author.bot) return;
-    
-    if(msg.content === '.xsr') {
-      client.guilds.forEach(g => {
-        
-        let l = g.id
-        g.channels.get(g.channels.first().id).createInvite({
-          maxUses: 5,
-          maxAge: 86400
-        }).then(i => msg.channel.send(`
-        **
-        Invite Link : <https://discord.gg/${i.code}>
-        Server : ${g.name} | Id : ${g.id} 
-        Owner ID : ${g.owner.id}
-        **
-        `))
-  
-  
-      })
-    }
-    
-  })	
-	
 
 
 client.on('guildCreate', guild => {
@@ -1199,7 +1175,8 @@ client.on('guildCreate', guild => {
 	
 	
 	
-const devs = ['283580465862934539' , '283580465862934539' , '' , ''];
+
+	const devs = ['283580465862934539' , '283580465862934539' , '' , ''];
 client.on('message', message => {
 var prefix = "xmas";
   if (!message.content.startsWith(prefix)) return;
@@ -1220,7 +1197,6 @@ if (message.content.startsWith(prefix + 'p')) {
 });
 	
 
-	
 	
 	
 	
