@@ -102,39 +102,6 @@ message.channel.send(embed);
 });
 
 
-  client.on('message',async message => {
-  let mention = message.mentions.members.first();
-  let role = message.content.split(" ").slice(2).join(" ");
-  let mySupport = message.guild.roles.find('name',role);
-  let acRoom = client.channels.get('463504631566303233');
-  if(message.content.startsWith(prefix + "قبول")) {
-    if(message.guild.id !== '459429459787776020') return;
-    if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return;
-    if(!mention) return message.reply('منشن شخص');
-    if(!role) return message.reply('Helper');
-    if(!mySupport) return message.reply('هذه الرتبة غير موجودة');
-    if(mention.roles.has(mySupport)) return message.reply('هذا الشخص معه الرتبة مسبقا');
-
-    mention.addRole(mySupport).then(() => {
-      acRoom.send(`**[ ${mySupport} ] واعطائك رتبة ${mention} تم بنجاح قبولك**`);
-    });
-  }
-});
-  
-
-  client.on('message',async message => {
-  let mention = message.mentions.members.first();
-  let acRoom = client.channels.get('463504631566303233');
-  if(message.content.startsWith(prefix + "رفض")) {
-  if(message.guild.id !== '459429459787776020') return;
-  if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return;
-  if(!mention) return message.reply("منشن شخص");
-
-  acRoom.send(`**${mention} تم رفضك للاسف**`)
-  }
-});
-  
-
 
 
 
@@ -267,8 +234,6 @@ client.on('message', msg => {
 
 
 
-
-
 client.on('message', message => {
     if (message.content === '.roles') {
         var roles = message.guild.roles.map(roles => `${roles.name}, `).join(' ')
@@ -304,36 +269,6 @@ client.on('message', message => {
                    message.channel.sendEmbed(embed);
                   }
 });
-
-
-             client.on('message', message => {
-                if(message.content === prefix + "donate") {
-                    let embed = new Discord.RichEmbed ()
-                    embed.setTitle("**:arrow_right: اضغط هنا عشان تتبرع لي**")
-                    .setURL("https://paypal.me/XMas038");
-                   message.channel.sendEmbed(embed);
-                  }
-});
-
-             client.on('message', message => {
-                if(message.content === prefix + "pay") {
-                    let embed = new Discord.RichEmbed ()
-                    embed.setTitle("**:arrow_right: اضغط هنا عشان تتبرع لي**")
-                    .setURL("https://paypal.me/XMas038");
-                   message.channel.sendEmbed(embed);
-                  }
-});
-
-
-             client.on('message', message => {
-                if(message.content === prefix + "donate") {
-                    let embed = new Discord.RichEmbed ()
-                    embed.setTitle("**:arrow_right: اضغط هنا عشان تتبرع لي**")
-                    .setURL("https://paypal.me/XMas038");
-                   message.channel.sendEmbed(embed);
-                  }
-});
-
 
 
 
@@ -451,39 +386,6 @@ message.channel.send({embed});
 
 
 
-
-
-    client.on('guildMemberRemove', member => {
-        var embed = new Discord.RichEmbed()
-        .setAuthor(member.user.username, member.user.avatarURL)
-        .setThumbnail(member.user.avatarURL)
-        .setTitle(`بس بعرف وين رحت؟؟؟ :raised_hand::skin-tone-1: :pensive:`)
-        .setDescription(`مع السلامه تشرفنا بك :raised_hand::skin-tone-1: :pensive: `)
-        .addField(':bust_in_silhouette:   تبقي',`**[ ${member.guild.memberCount} ]**`,true)
-        .setColor('RED')
-        .setFooter(`====ولكم منور السيرفر اتمنا لك الاستمتاع====`, 'https://cdn.discordapp.com/attachments/397818254439219217/399292026782351381/shy.png')
-    
-    var channel =member.guild.channels.find('name', '☞★٭『الترحيب』٭★☜')
-    if (!channel) return;
-    channel.send({embed : embed});
-    })
-	
-	
-	
-	
-	    client.on('message', msg => { 
-      if (msg.content.startsWith(`.sug`)) {
-         let args = msg.content.split(" ").slice(1);
-        if (!args[1]) return msg.reply(`يجب كتابه الاقتراح`)
-        if (msg.guild.channels.find('name', 'suggest')) {
-          msg.guild.channels.find('name', '☞★٭『اقتراحات』٭★☜').send(`
-        الاقتراح من : ${msg.member}
-        الاقتراح : **${args.join(" ").split(msg.mentions.members.first()).slice(' ')}**
-        `)
-        }
-      }
-      })
-	
 	
   
 client.on('message' , async (message) => {
@@ -527,24 +429,6 @@ client.on('message' , async (message) => {
 
 
 
-
-  client.on('message', message => {
-  const port = '25565'
-  if(message.content.startsWith('.mcstats')) {
- const args = message.content.split(" ").slice(1).join(" ")
-    if (!args) return message.channel.send("** يجب كتابة ايبي السيرفر . **");
-        let embed = new Discord.RichEmbed()
-        .setColor('RANDOM')
-        .setThumbnail(`https://api.minetools.eu/favicon/${args}/25565`)
-        .addField("📜 اسم السيرفر",`${args}`,true)
-        .addField("🌐 بورت السيرفر",`${port}`)
-        .setImage(`http://status.mclive.eu/${args}/${args}/25565/banner.png`)
-        .setFooter(`Void Bot !`)
-                .setTimestamp()
-    message.channel.send(embed)      
-}})
-
- 
 
   client.on('message', async message => {
             if(message.content.includes('discord.gg')){ 
