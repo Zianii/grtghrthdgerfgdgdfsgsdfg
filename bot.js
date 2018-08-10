@@ -722,47 +722,6 @@ client.on("message",function(message) {
     }
 
 
-
-	
-	
-	
-	
-
-
-
-client.on('guildCreate', guild => {
-  var embed = new Discord.RichEmbed()
-  .setColor(0x5500ff)
-  .setDescription(`**شكراً لك لإضافه البوت الى سيرفرك**`)
-      guild.owner.send(embed)
-});	
-	
-	
-	
-
-	const devs = ['283580465862934539' , '283580465862934539' , '' , ''];
-client.on('message', message => {
-var prefix = "xmas";
-  if (!message.content.startsWith(prefix)) return;
-  var args = message.content.split(' ').slice(1);
-    var argresult = message.content.split(` `).slice(1).join(' ');
-      if (!devs.includes(message.author.id)) return;
-
-if (message.content.startsWith(prefix + 'n')) {
-  client.user.setUsername(argresult).then
-      message.channel.sendMessage(`**${argresult}** : تم بنجاح تغيير الاسم ?`)
-  return message.reply("**تم تغيير الاسم البوت بنجاح ?**");
-} else
-if (message.content.startsWith(prefix + 'p')) {
-  client.user.setAvatar(argresult);
-    message.channel.sendMessage(`**${argresult}** : تم تغيير صورة البوت بنجاح ?`);
-
-}
-});
-	
-
-	
-	
 	
 	
 	
