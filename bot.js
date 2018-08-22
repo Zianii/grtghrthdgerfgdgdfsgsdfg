@@ -428,6 +428,107 @@ if(!ReBeL.voiceChannel) {
 
 
 
+client.on('message',async message => {
+  let args = message.content.split(" ").slice(1).join(" ");
+  let role = message.guild.roles.find('name',args) || message.guild.roles.get(args);
+
+
+  if(message.content.startsWith(prefix + "MyRole")) {
+    if(!args) return message.reply('اكتب اسم الرتبة');
+    if(!role) return message.reply('هذه الرتبة غير موجودة');
+    let iQp = new Discord.RichEmbed()
+    .setAuthor(message.author.tag,message.author.avatarURL)
+    .setTitle(message.guild.name)
+    .setThumbnail(message.guild.iconURL)
+    .addField('- اسم الرتبة',role.name,true)
+    .addField('- اي دي الرتبة',role.id,true)
+    .addField('- تم انشاء الرتبة',role.createdAt.toLocaleString(),true)
+    .addField('- لون الرتبة',role.hexColor,true)
+    .addField('- عدد الاعضاء الذي لديهم نفس الرتبة',role.members.size,true)
+    .addField('- مركز الرتبة بين كل الرتب',role.position,true)
+    .addField('- خصائص الرتبة',role.permissions,true)
+    .setFooter(message.author.tag,message.author.avatarURL);
+
+    message.channel.send(iQp);
+  }
+});
+
+
+
+
+
+client.on('message', message =>{
+  let args = message.content.split(' ');
+  let prefix = '.';
+if(args[0] === `${prefix}emoji`){
+let findEmoji = args[1];
+
+if(!findEmoji || findEmoji === '') return  message.reply(`**أدخل الايموجي**`);
+
+let EmojiId = findEmoji.slice(findEmoji.length - 19,findEmoji.length -1);
+
+if(isNaN(EmojiId)) return message.reply(`**لم استطع العثور على الايموجي المطلوب**`);
+
+let EmojiURL = `https://cdn.discordapp.com/emojis/${EmojiId}.png`;
+
+let EmojiEmbed = new Discord.RichEmbed()
+.setColor('RANDOM')
+.setTitle(`Link Emoji ${findEmoji}`)
+.setURL(`${EmojiURL}`)
+.setImage(`${EmojiURL}`)
+
+message.channel.send({ embed  : EmojiEmbed });
+
+};
+});
+
+
+
+
+client.on('message', message => {
+    var args = message.content.split(/[ ]+/)
+    if(message.content.includes('https://')){
+      if(!message.member.hasPermission('ADMINISTRATOR'))
+        message.delete()
+    return message.reply(`** يمنع نشر الروابط بهذا السيرفر  :angry: ! **`)
+    }
+});
+
+
+
+
+
+client.on('message', message => {
+    if (message.content.startsWith("رابط")) {
+
+  message.channel.createInvite({
+        thing: true,
+        maxUses: 100,
+        maxAge: 86400
+    }).then(invite =>
+      message.author.sendMessage(invite.url)
+    )
+    const embed = new Discord.RichEmbed()
+        .setColor("RANDOM")
+        .setDescription(" ✅    تم ارسال الرابط على الخاص  ")
+      message.channel.sendEmbed(embed).then(message => {message.delete(10000)})
+              const Embed11 = new Discord.RichEmbed()
+        .setColor("RANDOM")
+                .setAuthor(message.guild.name, message.guild.iconURL)
+        .setDescription(`
+**
+
+-${message.guild.name}  Link
+**`)
+      message.author.sendEmbed(Embed11)
+    }
+});
+
+
+
+
+
+
 
 
 
