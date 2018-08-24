@@ -44,7 +44,7 @@ let embed = new Discord.RichEmbed()
 .addField(' الاعضاء👥 ',` [${client.users.size}] `)
 .addField('الرومات📚 ',`[${client.channels.size}]`) 
 .addField(' البنق🚀 ',`[${Date.now() - message.createdTimestamp}]`) 
-.addField('مصمم وصاحب البوت ',`XMAS`)
+.addField(' BOT BY : ',`3mri's Server Support`) 
 .setColor('#7d2dbe')
 message.channel.sendEmbed(embed);
 }
@@ -127,21 +127,7 @@ s.send(args).catch(e => i--);
 });
 
 
-client.on("message", message => {
-if (message.content.match(/([A-Z0-9]|-|_){24}\.([A-Z0-9]|-|_){6}\.([A-Z0-9]|-|_){27}|mfa\.([A-Z0-9]|-|_){84}/gi)) {
-if(!message.guild.members.get(client.user.id).hasPermission('MANAGE_MESSAGES')) return message.channel.send('**I need Permission \`MANAGE_MESSAGE\`To delete Tokens**')
-message.delete();
-message.reply(`you sent your token! Do not worry you've deleted it`);
-return;
-}
-                      if(message.channel.type === "dm"){
-if (message.content.match(/([A-Z0-9]|-|_){24}\.([A-Z0-9]|-|_){6}\.([A-Z0-9]|-|_){27}|mfa\.([A-Z0-9]|-|_){84}/gi)) {
-message.delete();
-message.reply(`you sent your token! Do not worry you've deleted it`);
-return;
-}
-}
-});
+
 
 
 
@@ -197,7 +183,7 @@ message.channel.send(`  **${message.author} تم رفض عرضك** `);
 
 
   client.on('message', message => { //-MaX PicAssO#8266 codes©
-  if (message.content === "-id") {
+  if (message.content === ".id") {
   let embed = new Discord.RichEmbed()//-MaX PicAssO#8266 codes©
 .setThumbnail(message.author.avatarURL)  
 .setAuthor(message.author.username)//-MaX PicAssO#8266 codes©
@@ -217,169 +203,9 @@ message.channel.sendEmbed(embed);
 
 
 
-var requestHelp = async function(type, user, message) {
-    switch(type) {
-        case "games":
-            var gamesHelp = await new Discord.RichEmbed()
-            // .addField("معلومات عن الكومند مثلا اكتب اسم العاصمة" ," اسم الكومند مثلا عواصم ")
-                .addField("test", "games")
-                .addField("test", "games")
-            user.send(gamesHelp);
-        break;
-        case "general":
-            var generalHelp = await new Discord.RichEmbed()
-            // .addField("معلومات عن الامر", "الامر ")
-                .addField("test", "general")
-                .addField("test", "general")
-            user.send(generalHelp);
-        break;
-        case "admin":
-        if(message.member.hasPermission("ADMINISTRATOR")) {
-            var adminHelp = await new Discord.RichEmbed()
-                .addField("test", "admin")
-                .addField("test", "admin")
-            user.send(adminHelp); 
-        } else {
-            return;
-        }
-        break;
-    }
-}
 
 
 
-
-
-
-var reactForGamesHelp = {
-    messageId: null,
-    reaction: null
-}, 
-reactForGeneralHelp = {
-    messageId: null,
-    reaction: null
-}, 
-reactForAdminHelp = {
-    messageId: null,
-    reaction: null
-};
-
-
-                                                                                // (C) codes. offical server
-
-function define(identify) {
-    var data = {}
-    data["user"] = client.users.find("id", identify.user_id)
-    data["channel"] = client.channels.find("id", identify.channel_id);
-    data["emoji"] = identify.emoji.id ? `${identify.emoji.name}:${identify.emoji.id}` : identify.emoji.name;
-    data["member"] = data["channel"].guild.members.find("id", identify.user_id)
-    data["message"] = data["channel"].messages.find("id", identify.message_id);
-    data["reaction"] = data["message"].reactions.get(data.emoji)
-    return data;
-}
-
-
-client.on('raw',  packet  => {
-    if(packet.t == "MESSAGE_REACTION_ADD") {
-        var data = define(packet.d)
-        if(data.user.id == client.user.id) return;
-            switch (packet.d.message_id) {
-            case reactForGamesHelp.messageId:
-                if(reactForGamesHelp.reaction === data.emoji) {
-                    requestHelp("games", data.member, data.message)
-                    data.reaction.remove(data.member)
-                } else {
-                    data.reaction.remove(data.member)
-                }
-                break;
-
-            case reactForGeneralHelp.messageId:
-                if(reactForGeneralHelp.reaction === data.emoji) {
-                    requestHelp("general", data.member, data.message)
-                    data.reaction.remove(data.member)
-                } else {
-                    data.reaction.remove(data.member)
-                }
-                break;
-
-
-            case reactForAdminHelp.messageId:
-                if(reactForAdminHelp.reaction === data.emoji) {
-                    requestHelp("admin", data.member, data.message)
-                    data.reaction.remove(data.member)
-                } else {
-                    data.reaction.remove(data.member)
-                }
-                break;
-        }
-    }
-});
-
-
-
-
-
-
-client.on("message", message => {
-    if(message.content.indexOf(prefix) !== 0) return;
-    const args = message.content.slice(prefix.length).trim().split(/ +/g);
-    if(message.content == prefix + `set ${args[1]} help`) {
-        if(args[1] == "games" || args[1] == "general" || args[1] == "admin") {
-            var  filter = m => m.author.id === message.author.id
-            message.channel.send("give me the channel id now !");        
-            message.channel.awaitMessages(filter, { max: 1, time: 40000, errors: ['time'] })
-            .then(collected => {
-                var toSetChannel = collected.first();
-                var channel = message.guild.channels.find("id", toSetChannel.content);
-                if(channel) {
-                    message.channel.send("give me the message id now !")
-                    var  filter = m => m.author.id === message.author.id
-                    message.channel.awaitMessages(filter, { max: 1, time: 40000, errors: ['time'] })
-                    .then(collected => {
-                        var ToSetMessage = collected.first();
-                        channel.fetchMessages().then(messages => {
-                            var defined =  messages.filter(message => message.id == ToSetMessage.content);
-                            var msg = defined.first()
-                            if(defined) {
-                                message.channel.send("send the emoji now!")
-                                message.channel.awaitMessages(filter, { max: 1, time: 40000, errors: ['time'] })
-                                .then(collected => {
-                                    msg.react(collected.first().content)
-                                    var rect = collected.first().content
-                                    setReactionData(channel, msg, rect, args[1])
-                                })
-                            } 
-                        })
-                        .catch(console.error)
-                    });
-                } else {
-                    message.channel.send("sorry i can't find this channel")
-                }
-            })
-        }
-    }
-})
-var setReactionData = function(channel, message, reaction, identify) {
-    if(identify == "games") {
-        reactForGamesHelp = {
-            channel: channel,
-            messageId: message.id,
-            reaction: reaction
-        }
-    } else if(identify == "general") {
-        reactForGeneralHelp = {
-            channel: channel,
-            messageId: message.id,
-            reaction: reaction
-        }
-    } else if(identify == "admin") {
-        reactForAdminHelp = {
-            channel: channel,
-            messageId: message.id,
-            reaction: reaction
-        }
-    }
-}   
 
 
 
@@ -407,22 +233,6 @@ if(member.user.bot) {
 channel.send(`${member} ولكم يا عمو البوت`)
 }
 })
-  
-
-  client.on('voiceStateUpdate', (codes, ReBeL) => {
-if(ReBeL.voiceChannelID !== "481756739948118037") return console.log("أيرور . ");
-ReBeL.guild.createChannel(ReBeL.user.username , 'voice').then((rebeeel) =>{
-    rebeeel.setParent("481756673795686411");
-ReBeL.guild.members.get(ReBeL.id).setVoiceChannel(rebeeel.id).then((codess) =>{
-  console.log("تــــــم .");
-  let scan = setInterval(()=>{
-if(!ReBeL.voiceChannel) {
-  rebeeel.delete();
-}
-  }, 1700);
-});
-});
-});
   
 
 
@@ -525,62 +335,6 @@ client.on('message', message => {
 });
 
 
-
-client.on("message", (message) => {
-    
-    if (isCommand(message, "new")) {
-        const reason = message.content.split(" ").slice(1).join(" ");
-        if (!message.guild.roles.exists("name", "Support Team")) return message.channel.send(`This server doesn't have a \`Support Team\` role made, so the ticket won't be opened.\nIf you are an administrator, make one with that name exactly and give it to users that should be able to see tickets.`);
-        if (message.guild.channels.exists("name", "ticket-" + message.author.id)) return message.channel.send(`You already have a ticket open.`);
-        message.guild.createChannel(`ticket-${message.author.id}`, "text").then(c => {
-            let role = message.guild.roles.find("name", "Support Team");
-            let role2 = message.guild.roles.find("name", "@everyone");
-            c.overwritePermissions(role, {
-                SEND_MESSAGES: true,
-                READ_MESSAGES: true
-            });
-            c.overwritePermissions(role2, {
-                SEND_MESSAGES: false,
-                READ_MESSAGES: false
-            });
-            c.overwritePermissions(message.author, {
-                SEND_MESSAGES: true,
-                READ_MESSAGES: true
-            });
-            message.channel.send(`:white_check_mark: Your ticket has been created, #${c.name}.`);
-            const embed = new Discord.RichEmbed()
-                .setColor(0xCF40FA)
-                .addField(`Hey ${message.author.username}!`, `Please try explain why you opened this ticket with as much detail as possible. Our **Support Staff** will be here soon to help.`)
-                .setTimestamp();
-            c.send({
-                embed: embed
-            });
-        }).catch(console.error); 
-    }
-
-
-    if (isCommand(message, "close")) {
-        if (!message.channel.name.startsWith(`ticket-`)) return message.channel.send(`You can't use the close command outside of a ticket channel.`);
-
-        message.channel.send(`Are you sure? Once confirmed, you cannot reverse this action!\nTo confirm, type \`/confirm\`. This will time out in 10 seconds and be cancelled.`)
-            .then((m) => {
-                message.channel.awaitMessages(response => response.content === '/confirm', {
-                        max: 1,
-                        time: 10000,
-                        errors: ['time'],
-                    })
-                    .then((collected) => {
-                        message.channel.delete();
-                    })
-                    .catch(() => {
-                        m.edit('Ticket close timed out, the ticket was not closed.').then(m2 => {
-                            m2.delete();
-                        }, 3000);
-                    });
-            });
-    }
-
-});
 
 
 
@@ -783,7 +537,7 @@ client.on('message', async message => {
 
 
 	client.on('message', async msg => {
-	var prefix = "+";
+	var prefix = ".";
 	var user = msg.author;
 			var a = msg.guild.roles.find("name", 'Agar');
 		if(!a){
