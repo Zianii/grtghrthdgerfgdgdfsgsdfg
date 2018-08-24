@@ -614,10 +614,10 @@ gg.send({embed : new Discord.RichEmbed()//By Codes , - ST I EdiTeD , .#4968//By 
 }        
 })
 })
-})//By Codes , - ST I EdiTeD , .#4968
 })
 })
- }//By Codes ,
+})
+ }
 
 
 
