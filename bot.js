@@ -534,7 +534,7 @@ client.on('message', message => {
 
 
 client.on('message', async message => {//By Codes , - ST I EdiTeD , .#4968
-  if(message.content.startsWith(prefix + "تقديم")) {//By Codes , - ST I EdiTeD , .#4968//By Codes , - ST I EdiTeD , .#4968//By Codes , - ST I EdiTeD , .#4968
+  if(message.content.startsWith("تقديم")) {//By Codes , - ST I EdiTeD , .#4968//By Codes , - ST I EdiTeD , .#4968//By Codes , - ST I EdiTeD , .#4968
     await message.channel.send("**:writing_hand: ماذا ستفعل بالرتبة عند استلامها **").then(e => {
     let filter = m => m.author.id === message.author.id
     let lan = '';
