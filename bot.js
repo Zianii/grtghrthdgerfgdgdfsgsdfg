@@ -645,12 +645,201 @@ cc.on("collect", r => {
 	 });
 
 
+client.on('message', message => {
+    if (message.content.startsWith("!تهكير")) {
+      if (message.author.bot) return
+           message.delete();
+             let args = message.content.split(' ').slice(1);
+                   let virusname = args.join(' ');
+                 if (virusname < 1) {
+                     return message.channel.send("``اكتب اسم الشخص الي تبي يتهكر``");
+                                     }
+                 message.channel.send({embed: new Discord.RichEmbed().setTitle('Loading ' + virusname + "...").setColor(0xFF0000)}).then(function(m) {
+             setTimeout(function() {
+               m.edit({embed: new Discord.RichEmbed().setTitle('[' + virusname + ']: Loading Discord Virus [▓ ] 1%').setColor(0xFF0000)})
+             }, 1000)
+            setTimeout(function() {
+               m.edit({embed: new Discord.RichEmbed().setTitle('[' + virusname + ']: Loading Discord Virus [▓▓▓▓] 25%').setColor(0xFF0000)})
+             }, 2000)
+           setTimeout(function() {     
+               m.edit({embed: new Discord.RichEmbed().setTitle('[' + virusname + ']: Loading Discord Virus [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ ] 100%').setColor(0xFF0000)})
+             }, 3000)
+                setTimeout(function() {
+               m.edit({embed: new Discord.RichEmbed().setTitle('[' + virusname + ']: Uploaded! Initiating explosion in 1...').setColor(0xFF0000)})
+             }, 4000)
+              setTimeout(function() {
+               m.delete()
+           }, 5000)
+             setTimeout(function() {
+               message.channel.send('تم تهكيرك')
+           }, 6000)
+           });
+         }
+ });
+
+
+
+client.on('message' , message => {
+  var prefix = "*";
+  if(message.author.bot) return;
+  if(message.content.startsWith(prefix + "send")) {
+    let args = message.content.split(" ").slice(1);
+
+
+    let suggestmessage = args.join(" ").slice(22);
+    let suggestchannel = message.mentions.channels.first();
+
+    if (!suggestchannel) {
+        return message.reply("Please Mention the channel!")
+    }
+
+    if (!suggestmessage) {
+        return message.reply("Plase Give Text To send Channel!")
+    
+         
+    }
+     message.delete();
+suggestchannel.send("@everyone  `||` @here ");
+    let embed = new Discord.RichEmbed()
+        .addField("**message**", `${suggestmessage}`)
+        .setFooter(`by ${message.author.tag}`)
+        .setTimestamp()
+    suggestchannel.send({
+        embed
+    }).then(msg => {
+        msg.react("✅").then(r => msg.react("❎"))
+    });
+
+
+    message.reply(`Your message is sended.`).then(msg => msg.delete(1000));
+    return;
+}
+});
+
+
+
+client.on('message', message => {
+  if(message.content === 'قناة الاونر') {
+  const embed = new Discord.RichEmbed()
+  .setTitle('Click here')
+  .setURL('https://www.youtube.com/channel/UCFveauiIL3YA-h1tx2T5f0A')
+  .setColor('RANDOM')
+  message.channel.send({embed: embed});
+  }
+});
 
 
 
 
 
+client.on('message', message => {
+if (message.content.startsWith('.inv')) {
+let oi = message.mentions.users.first() ? message.mentions.users.first().id : message.author.id ; 
+  let img = message.mentions.users.first() ? message.mentions.users.first().username : message.author.username;
+  let imagemm = message.mentions.users.first() ? message.mentions.users.first().avatarURL : message.author.avatarURL
+  message.guild.fetchInvites().then(invs => {
+    let member = client.guilds.get(message.guild.id).members.get(oi);
+    let personalInvites = invs.filter(i => i.inviter.id === oi);
+    let urll = invs.filter(i => i.inviter.id === oi);
+    let link = urll.reduce((p , v) => v.url +` , Total de membros recrutados no convite: ${v.uses}.\n`+ p, `\nServidor: ${message.guild.name} \n `);
+    let inviteCount = personalInvites.reduce((p, v) => v.uses + p, 0);
+   let exec = personalInvites.reduce((p, v) => v.inviter);
+ let possibleInvites = [['Total de membros recrutados:']];
+possibleInvites.push([inviteCount, exec]);
+        let user = message.mentions.users.first() || message.author;
+        let mem = message.guild.member(user);
+        let millisJoined = new Date().getTime() - mem.joinedAt.getTime();
+        let daysJoined = millisJoined / 1000 / 60 / 60 / 24;
+const alpha = new Discord.RichEmbed()
+.setAuthor(img)
+.addField('🏆 Invite Infos',  `\n\n► لقد قمت بدعوة ما مجموعه \`\`${Number(inviteCount)}\`\` عضو.\n\n► لقد انضممت لسرفر مند\`${daysJoined.toFixed(0)}\`يوم .\n\n► لقد انضممت بهذه الدعوة\`${exec}\``,true)
+.setThumbnail(imagemm)
+.setColor(0x4959e9);
+message.channel.send(alpha);
 
+});
+
+};
+  });
+
+
+
+
+client.on("message", message => {
+        let args = message.content.split(" ").slice(1);
+      if (message.content.startsWith(prefix + 'report')) {
+            let user = message.mentions.users.first();
+            let reason = args.slice(1).join(' ');
+            let modlog = client.channels.find('name', 'reports');
+            if (!reason) return message.reply('**ضع سبباً مقنعاً**');
+              if (message.mentions.users.size < 1) return message.reply('**يجب عليك منشن للعضو المراد الابلاغ عليه**').catch(console.error);
+       
+        if (!modlog) return message.reply('**لا يوجد روم بأسم reports**');
+        const embed = new Discord.RichEmbed()
+          .setColor(0x00AE86)
+          .setTimestamp()
+          .addField('نوع الرسالة:', 'Report')
+          .addField('المراد الابلاغ عليه:', `${user.username}#${user.discriminator} (${user.id}`)
+          .addField('صاحب الابلاغ:', `${message.author.username}#${message.author.discriminator}`)
+          .addField('السبب', reason);
+          message.delete()
+          return client.channels.get(modlog.id).sendEmbed(embed).catch(console.error);
+          console.log('[report] Send By: ' + message.author.username)
+      }
+      });
+
+
+
+
+
+client.on('message', async message => {
+  if(message.content.startsWith(prefix + "Helper")) {
+    await message.channel.send("** ❓  حسنا, لماذا تريد التقديم على رتبة هلبر**").then(e => {
+    let filter = m => m.author.id === message.author.id
+    let lan = '';
+    let md = '';
+    let br = '';
+    let chaLan = message.channel.awaitMessages(filter, { max: 1, time: 40000, errors: ['time'] })
+    .then(collected => {
+      lan = collected.first().content
+      collected.first().delete()
+e.delete();
+     message.channel.send('** رائع, بماذا ستساعدنا ❓**').then(m => {
+let chaMd = message.channel.awaitMessages(filter, { max: 1, time: 40000, errors: ['time'] })
+.then(co => {
+  md = co.first().content
+        co.first().delete()
+        m.delete();
+message.channel.send('**اخيرا وليس اخرا, هل ستحترم الاعضاء الاقل و الاعلى منك رتبة ❓ **').then(ms => {
+let br = message.channel.awaitMessages(filter, { max: 1, time: 40000, errors: ['time'] })
+.then(col => {
+  br = col.first().content
+        col.first().delete()
+
+ms.delete()
+
+ message.channel.send('جاري التقديم ..').then(b => {
+        setTimeout(() => {
+  b.edit(`**تم التقديم وسيتم الرد فـ اقرب وقت**`)
+        },2000);
+var gg = message.guild.channels.find('name', 'تقديمات')
+if(!gg) return;
+if(gg) {
+gg.send({embed : new Discord.RichEmbed()
+.setDescription(`**  سبب التقديم :question:  : \n ${lan}\nبماذا سيساعد :link: :\n ${md} \nاحترام الاعضاء :question: :\n ${br}  \nتم التقديم بواسطة  : <@${message.author.id}> **`)  
+          .setFooter(`3mri's Server`)
+.setTimestamp()
+});
+}        
+})
+})
+})
+})
+})
+})
+})
+ }
+})
 
 
 
