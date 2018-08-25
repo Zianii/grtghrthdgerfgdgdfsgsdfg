@@ -383,7 +383,7 @@ client.on('message', async msg => {
 			        .setDescription(`**الرجآء من حضرتك إختيآر رقم المقطع** :
 ${videos.map(video2 => `[**${++index} **] \`${video2.title}\``).join('\n')}`)
 
-					.setFooter("Speed Bot")
+					.setFooter("3mri's Bot")
 					msg.channel.sendEmbed(embed1).then(message =>{message.delete(20000)})
 					
 					try {
@@ -397,7 +397,7 @@ ${videos.map(video2 => `[**${++index} **] \`${video2.title}\``).join('\n')}`)
 						return msg.channel.send('لم يتم إختيآر مقطع صوتي');
 					}
 					const videoIndex = parseInt(response.first().content);
-					var video = await youtube.getVideoByID(videos[videoIndex . ].id);
+					var video = await youtube.getVideoByID(videos[videoIndex . 1].id);
 				} catch (err) {
 					console.error(err);
 					return msg.channel.send(':X: لا يتوفر نتآئج بحث ');
@@ -2358,7 +2358,7 @@ omar.reply("`تم حذف جميع الرتب بنجاح`")
 });
 
 client.on('message', message => {
-	var prefix = ".";
+	var prefix = "-";
    if(!message.channel.guild) return;
 if(message.content.startsWith(prefix + 'clear')) {
 if(!message.channel.guild) return message.channel.send('**This Command is Just For Servers**').then(m => m.delete(5000));
@@ -2430,11 +2430,6 @@ client.on("message", (message) => {
         channel.delete()
     }
 });  
-
-
-
-
-
 
 
 
@@ -2744,204 +2739,9 @@ client.on('message', message => {
 
 
 
-client.on('message', async message => {
-  let args = message.content.split(" ");
-  if(message.content.startsWith(prefix + "mute")) {
-    if(!message.member.hasPermission("MANAGE_ROLES")) return message.reply('**أنت لا تملك الخصائص اللازمة . يجب توفر خاصية `Manage Roles`**').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
-
-    if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply('**أنا لا املك الخصائص الكافية . يلزم خصائص `Manage Roles` للقيام بهذا الامر**').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
-
-    let mention = message.mentions.members.first();
-    if(!mention) return message.reply('**منشن عضو لأسكاته ( لأعطائة ميوت ) كتابي**').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
-
-    if(mention.highestRole.position >= message.guild.member(message.author).highestRole.positon) return message.reply('**لا يمكنك اعطاء لميوت شخص رتبته اعلى منك**').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
-    if(mention.highestRole.positon >= message.guild.member(client.user).highestRole.positon) return message.reply('**لا يمكنني اعطاء ميوت لشخص رتبته اعلى مني**').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
-    if(mention.id === message.author.id) return message.reply('**لا يمكنك اعطاء ميوت  لنفسك**').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
-
-    let duration = args[2];
-    if(!duration) return message.reply('**حدد وقت زمني لفك الميوت عن الشخص**').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
-
-    if(isNaN(duration)) return message.reply('**حدد وقت زمني صحيح**').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
-
-    let reason = message.content.split(" ").slice(3).join(" ");
-    if(!reason) reason = "غير محدد";
-
-    let thisEmbed = new Discord.RichEmbed()
-    .setAuthor(mention.user.username, mention.user.avatarURL)
-    .setTitle('تم اغطائك ميوت بسيرفر')
-    .setThumbnail(mention.user.avatarURL)
-    .addField('# - السيرفر',message.guild.name,true)
-    .addField('# - تم اعطائك ميوت بواسطة',message.author,true)
-    .addField('# - السبب',reason)
-
-    let role = message.guild.roles.find('name', 'Muted') || message.guild.roles.get(r => r.name === 'Muted');
-    if(!role) try {
-      message.guild.createRole({
-        name: "Muted",
-        permissions: 0
-      }).then(r => {
-        message.guild.channels.forEach(c => {
-          c.overwritePermissions(r , {
-            SEND_MESSAGES: false,
-            READ_MESSAGES_HISTORY: false,
-            ADD_REACTIONS: false
-          });
-        });
-      });
-    } catch(e) {
-      console.log(e.stack);
-    }
-    mention.addRole(role).then(() => {
-      mention.send(thisEmbed);
-      message.channel.send(`**:white_check_mark: ${mention.user.username} muted in the server ! :zipper_mouth:  **  `);
-      mention.setMute(true);
-    });
-    setTimeout(() => {
-      if(duration === 0) return;
-      if(!mention.has.roles(role)) return;
-      mention.setMute(false);
-      mention.removeRole(role);
-      message.channel.send(`**:white_check_mark: ${mention.user.username} unmuted in the server ! :neutral_face:  **  `);
-    },duration * 60000);
-  } else if(message.content.startsWith(prefix + "unmute")) {
-    let mention = message.mentions.members.first();
-    let role = message.guild.roles.find('name', 'Muted') || message.guild.roles.get(r => r.name === 'Muted');
-    if(!message.member.hasPermission("MANAGE_ROLES")) return message.reply('**أنت لا تملك الخصائص اللازمة . يجب توفر خاصية `Manage Roles`**').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
-
-    if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply('**أنا لا املك الخصائص الكافية . يلزم خصائص `Manage Roles` للقيام بهذا الامر**').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
-
-    if(!mention) return message.reply('**منشن الشخص لفك الميوت عنه**').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
-
-      mention.removeRole(role);
-      mention.setMute(false);
-      message.channel.send(`**:white_check_mark: ${mention.user.username} unmuted in the server ! :neutral_face:  **  `);
-  }
-});
-
-
-
-
-client.on('message', async message => {
-  if(message.author.bot) return;
-  if(message.channel.type === "dm") return;
-
-  let args = message.content.split(" ");
-  let command = args[0];
-
-  if(message.content.startsWith(prefix + "clear")) {
-    if(!message.member.hasPermission("MANAGEP_MESSAGES")) return message.reply('**انت لا تملك الخصائص الكافية.**').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
-
-    if(!args[1]) {
-      var stop = true;
-      var msg = parseInt(100);
-
-      stop = false;
-      setTimeout(() => {
-        stop = true;
-      },3005);
-      setInterval(() => {
-        if(stop === true) return;
-        message.channel.fetchMessages({
-          limit: msg
-        }).then(m => {
-          message.channel.bulkDelete(msg).then(() => {
-            message.channel.send(`${message.author},\n\`\`\`تم مسح الرسائل بنجاح\`\`\``).then(msg => {
-              msg.delete(3000);
-            });
-          });
-        });
-      },1000);
-    } else if(args[1]) {
-      if(args[1] <= 100) {
-          message.channel.fetchMessages({
-              limit: msg
-          }).then(m => {
-              message.channel.bulkDelete(m).then(() => {
-                  message.channel.send(`${message.author},\n\`\`\`تم مسح الرسائل بنجاح\`\`\``).then(msg => {
-              msg.delete(3000);
-                  });
-              });
-          });
-      } else if(args[1] <= 200) {
-        stop = true;
-        setTimeout(() => {
-          stop = false;
-        },2001);
-        setInterval(() => {
-          if(stop === true) return;
-          message.channel.fetchMessages({
-            limit: msg
-          }).then(m => {
-            message.channel.bulkDelete(m).then(() => {
-                message.channel.send(`${message.author},\n\`\`\`تم مسح الرسائل بنجاح\`\`\``).then(msg => {
-              msg.delete(3000);
-                  });
-            });
-          });
-        },1000);
-      } else if(args[1] <= 300) {
-        stop = true;
-        setTimeout(() => {
-          stop = false;
-        },2001);
-        setInterval(() => {
-          if(stop === true) return;
-          message.channel.fetchMessages({
-            limit: msg
-          }).then(m => {
-            message.channel.bulkDelete(m).then(() => {
-            message.channel.send(`${message.author},\n\`\`\`تم مسح الرسائل بنجاح\`\`\``).then(msg => {
-              msg.delete(3000);
-                  });
-            });
-          });
-        });
-      }
-    }
-  }
-});
-
-
-
 
 	client.on('message', async msg => {
-	var prefix = ".";
+	var prefix = "-";
 	var user = msg.author;
 			var a = msg.guild.roles.find("name", 'Agar');
 		if(!a){
@@ -3050,7 +2850,7 @@ cc.on("collect", r => {
 
 
 client.on('message', message => {
-    if (message.content.startsWith("!تهكير")) {
+    if (message.content.startsWith("-تهكير")) {
       if (message.author.bot) return
            message.delete();
              let args = message.content.split(' ').slice(1);
@@ -3084,7 +2884,7 @@ client.on('message', message => {
 
 
 client.on('message' , message => {
-  var prefix = "*";
+  var prefix = "-";
   if(message.author.bot) return;
   if(message.content.startsWith(prefix + "send")) {
     let args = message.content.split(" ").slice(1);
@@ -3137,7 +2937,7 @@ client.on('message', message => {
 
 
 client.on('message', message => {
-if (message.content.startsWith('.inv')) {
+if (message.content.startsWith('-inv')) {
 let oi = message.mentions.users.first() ? message.mentions.users.first().id : message.author.id ; 
   let img = message.mentions.users.first() ? message.mentions.users.first().username : message.author.username;
   let imagemm = message.mentions.users.first() ? message.mentions.users.first().avatarURL : message.author.avatarURL
@@ -3244,7 +3044,6 @@ gg.send({embed : new Discord.RichEmbed()
 })
  }
 })
-
 
 
 
