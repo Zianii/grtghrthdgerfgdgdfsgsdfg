@@ -397,7 +397,7 @@ ${videos.map(video2 => `[**${++index} **] \`${video2.title}\``).join('\n')}`)
 						return msg.channel.send('لم يتم إختيآر مقطع صوتي');
 					}
 					const videoIndex = parseInt(response.first().content);
-					var video = await youtube.getVideoByID(videos[videoIndex . 1].id);
+					var video = await youtube.getVideoByID(videos[videoIndex . ].id);
 				} catch (err) {
 					console.error(err);
 					return msg.channel.send(':X: لا يتوفر نتآئج بحث ');
