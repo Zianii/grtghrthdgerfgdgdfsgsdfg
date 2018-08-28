@@ -1076,21 +1076,6 @@ return;
 
 
 
-client.on('guildMemberAdd', member => {
-    const botCount = member.guild.members.filter(m=>m.user.bot).size
-    const memberCount = [member.guild.memberCount] - [botCount]
-    client.channels.get('475353580958777345').setName(`⟫『 ${memberCount} عدد الاعضاء 』⟪`);
-    client.channels.get('475353595563474954').setName(`⟫『 ${botCount} عدد البوتات 』⟪`);
-});
-
-client.on('guildMemberRemove', member => {
-    const botCount = member.guild.members.filter(m=>m.user.bot).size
-    const memberCount = [member.guild.memberCount] - [botCount]
-    client.channels.get('475353580958777345').setName(`⟫『 ${memberCount} عدد الاعضاء 』⟪`);
-    client.channels.get('475353595563474954').setName(`⟫『 ${botCount} عدد البوتات 』⟪`);
-});
-
-
 client.on('message', message => {
     if (message.content.startsWith("+invite")) {
 
@@ -1162,7 +1147,7 @@ const Sra7a = [
     'صراحه  |  ما هي أمنياتك المُستقبلية؟‏',
 ]
   client.on('message', message => {
-if (message.content.startsWith('+صراحه')) {
+if (message.content.startsWith('.صراحه')) {
     if(!message.channel.guild) return message.reply('** This command only for servers **');
  var client= new Discord.RichEmbed()
  .setTitle("لعبة صراحة ..")
@@ -1209,7 +1194,7 @@ client.on('message',message =>{
   
   
  client.on('message', message => {
-        var prefix = "+";
+        var prefix = ".";
         if(message.content.startsWith(prefix + 'mutevoice')) {
           if(!message.member.hasPermission("MUTE_MEMBERS")) return message.channel.sendMessage("**ليس لديك صلاحية لاعطاء ميوت صوتي**❌ ").then(m => m.delete(5000));
           if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return message.reply("**I Don't Have `MUTE_MEMBERS` Permission**").then(msg => msg.delete(6000))
@@ -1235,9 +1220,9 @@ client.on('message',message =>{
     let messageArray = message.content.split(" ");
     let cmd = messageArray[0];
     let args = messageArray.slice(1);
-    let prefix = '!!';
+    let prefix = '.';
 
-if(cmd === `${prefix}suggest`) {
+if(cmd === `${prefix}sug`) {
     var suggestMessage = message.content.substring(8)
     let suggestEMBED = new Discord.RichEmbed()
     .setColor(3447003)
@@ -1338,28 +1323,28 @@ const embed = new Discord.RichEmbed()
 
 
 client.on('message', message => {
-  if (message.content.startsWith(prefix + "deafen")) {
+  if (message.content.startsWith(prefix + "d")) {
     if (!message.member.hasPermission('DEAFEN_MEMBERS')) return;
   { message.member.setDeaf(true);
     }
   }
     });
 client.on('message', message => {
-  if (message.content.startsWith(prefix + "mute")) {
+  if (message.content.startsWith(prefix + "m")) {
     if (!message.member.hasPermission('DEAFEN_MEMBERS')) return;
   { message.member.setMute(true);
     }
   }
     });
 client.on('message', message => {
-  if (message.content.startsWith(prefix + "undeafen")) {
+  if (message.content.startsWith(prefix + "und")) {
     if (!message.member.hasPermission('DEAFEN_MEMBERS')) return;
   { message.member.setDeaf(false);
     }
   }
     });
 client.on('message', message => {
-  if (message.content.startsWith(prefix + "unmute")) {
+  if (message.content.startsWith(prefix + "un")) {
     if (!message.member.hasPermission('MUTE_MEMBERS')) return;
   { message.member.setMute(false);
     }
@@ -1386,7 +1371,7 @@ client.on('message', message => {
 
 
 client.on('message', async najzx => {
-    if(najzx.content.startsWith("+tv")) {
+    if(najzx.content.startsWith(".tv")) {
       if(!najzx.member.hasPermission('MANAGE_CHANNELS')) return;
       await najzx.channel.send("ارسل اسم الروم").then(e => {
       let filter = m => m.author.id === najzx.author.id
